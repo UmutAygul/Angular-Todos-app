@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
 import {HttpClient} from '@angular/common/http'
-import { TodoResponseModel } from 'src/app/models/todoResponseModel';
+import { TodoService } from 'src/app/services/todo.service';
+
 
 @Component({
   selector: 'app-todos',
@@ -11,25 +12,33 @@ import { TodoResponseModel } from 'src/app/models/todoResponseModel';
 export class TodosComponent implements OnInit {
   
   
-  todos:Todo []= [];
-  apiUrl="https://jsonplaceholder.typicode.com/todos"
-  // todoResponseModel:TodoResponseModel={
-  //   data: this.todos
-  // };
+  todoss:Todo []= [];
+  // apiUrl="https://jsonplaceholder.typicode.com/todos"
 
-  constructor(private httpClient:HttpClient) { }
 
+  constructor(private httpClient:HttpClient,private todoService:TodoService) { }
+  // constructor(private httpClient:HttpClient) { }
   ngOnInit(): void {
     this.getTodos();
   }
 
 
   getTodos(){
-    this.httpClient.get<TodoResponseModel>(this.apiUrl)
+    this.todoService.getTodos()
     .subscribe((response)=>{
-      this.todos=response.data
-      console.log("todos:",response)
+      this.todoss=response
+      console.log(this.todoss)
+      
     });
   }
+
+  // getTodos(){
+  //   this.httpClient.get<Todo[]>(this.apiUrl)
+  //   .subscribe((response)=>{
+  //     this.todoss=response
+  //     console.log(this.todoss)
+      
+  //   });
+  // }
 
 }
