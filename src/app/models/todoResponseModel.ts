@@ -1,5 +1,7 @@
 import { Todo } from "./todo";
 
-export interface ProductResponseModel{
+export interface TodoResponseModel{
     data:Todo[]
+    
+    
 }
