@@ -1,19 +1,27 @@
 <app-navi></app-navi>
-<ul>
+
 <ul><h1>Hello {{user}}</h1>
   <h2>Welcome to {{title}}'s lesson</h2></ul>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-6">
+      <app-todos></app-todos>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+
+
+
+ 
 
 
 
 
 
 
-
-
-
-
-<app-todos></app-todos>
-</ul>
 <router-outlet></router-outlet>
